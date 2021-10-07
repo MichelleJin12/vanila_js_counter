@@ -42,7 +42,8 @@ class Calculator {
   chooseOperation(operation) {
 		if (this.currentOperand === '') return ;
 		if (this.previousOperand !== '' || this.currentOperand != '0') {
-			this.compute();
+			if (isNaN(parseFloat(this.previousOperand))) ;
+			else this.compute();
 			this.operation = operation;
 			this.previousOperand = this.currentOperand;
 			this.currentOperand = '';
