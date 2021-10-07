@@ -1,6 +1,13 @@
 import Counter from './counter.js';
 
 let num = 0;
+//전역쓰지않기.....
+// id -> class 로 바꾸기
+// ts는 js로 컴파일이 필요한 언어..
+// const $ = (selector) => document.querySelector(selector);
+// const dom = (selector) => document.querySelector(selector);  이렇게 해도됨
+// HTML input 대신에 button tag 쓰기
+// 
 
 interface IObj {
 	state: number;
@@ -12,6 +19,7 @@ const init = class Init {
 
 	constructor() {
 		this._instances = new Array();
+		//num 추가
 	}
 
 	// User clicks Add Counter
@@ -20,6 +28,7 @@ const init = class Init {
 	}
 
 	CreateInstance = () => {
+		// let 많이 쓰면 안좋다.
 		let tmp = new Counter(0, num++);
 		let ObjInfo: IObj = {
 			state: 0,
@@ -30,11 +39,12 @@ const init = class Init {
             	this.Events(tmp);
 	}
 
+	// type이 무엇인지 찾아보기
 	CreateHTML = (counter: any) => {
-		let html = `
+		const html = `
 		<div id="id${counter.Number}">
 			<p id="${counter.Number}">
-				${counter.State}
+				${counter.state}
 			</p>
 			<input type="button" value=-1 id="decrease${counter.Number}">
 			<input type="button" value=+1 id="increase${counter.Number}">
@@ -53,19 +63,21 @@ const init = class Init {
 	    };
 
 	Increase = (event: any) => {
-		event.State = ++event.State;
-		document.getElementById(`${event.Number}`).innerText = event.State;
+		event.state = ++event.state;
+		document.getElementById(`${event.Number}`).innerText = event.state;
 
 	}
 
 	Decrease = (event: any) => {
-		event.State = --event.State;
-		document.getElementById(`${event.Number}`).innerText = event.State;
+		// ??
+		//counter class의 Decrease 메소드 쓰기
+		event.state = --event.state;
+		document.getElementById(`${event.Number}`).innerText = event.state;
 	}
 
 	Reset = (event: any) => {
-		event.State = 0;
-		document.getElementById(`${event.Number}`).innerText = event.State;
+		event.state = 0;
+		document.getElementById(`${event.Number}`).innerText = event.state;
 	}
 
 	Delete = (event: any) => {

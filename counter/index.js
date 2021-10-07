@@ -1,5 +1,7 @@
 import Counter from './counter.js';
 let num = 0;
+
+// 클래스 변수에 넣지 않기
 const init = class Init {
     constructor() {
         // User clicks Add Counter
@@ -20,7 +22,7 @@ const init = class Init {
             let html = `
 		<div id="id${counter.Number}">
 			<p id="${counter.Number}">
-				${counter.State}
+				${counter.state}
 			</p>
 			<input type="button" value=-1 id="decrease${counter.Number}">
 			<input type="button" value=+1 id="increase${counter.Number}">
@@ -37,16 +39,16 @@ const init = class Init {
             document.getElementById(`del${event.Number}`).addEventListener('click', () => { this.Delete(event); });
         };
         this.Increase = (event) => {
-            event.State = ++event.State;
-            document.getElementById(`${event.Number}`).innerText = event.State;
+            event.state = ++event.state;
+            document.getElementById(`${event.Number}`).innerText = event.state;
         };
         this.Decrease = (event) => {
-            event.State = --event.State;
-            document.getElementById(`${event.Number}`).innerText = event.State;
+            event.state = --event.state;
+            document.getElementById(`${event.Number}`).innerText = event.state;
         };
         this.Reset = (event) => {
-            event.State = 0;
-            document.getElementById(`${event.Number}`).innerText = event.State;
+            event.state = 0;
+            document.getElementById(`${event.Number}`).innerText = event.state;
         };
         this.Delete = (event) => {
             document.getElementById(`id${event.Number}`).remove();
@@ -54,5 +56,7 @@ const init = class Init {
         this._instances = new Array();
     }
 };
+// 변수명 바꾸기
 const abc = new init;
+
 abc.InitEvents();

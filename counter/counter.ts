@@ -1,4 +1,5 @@
 const Counter = class counter {
+	// 변수명 명확하게
 	_state: number;
 	_num: number;
 
@@ -7,11 +8,12 @@ const Counter = class counter {
 		this._num = num;
 	}
 
-	get State() {
+	// 소문자
+	get state() {
 		return this._state;
 	}
 
-	set State(state: number) {
+	set state(state: number) {
 		this._state = state;
 	}
 

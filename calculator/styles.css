@@ -1,0 +1,73 @@
+*, *::before, *::after { /* 모든 것 앞 뒤로*/
+  box-sizing: border-box; /* easier to size elements */
+  font-family: Gotham Rounded, sans-serif; /*Gotham Rounded는 설치 해야함  Gotham Rounded가 없으면 san-serif*/
+  font-weight: normal;
+}
+
+body { /* background */
+  padding: 0;
+  margin: 0;
+  /* 선 그라데이션 오른쪽으로 초록 -> 연두 */
+  background: linear-gradient(to right, #00AAFF, #00FF6C);
+}
+
+/* 모든 버튼에 적용됨 */
+.calculator-grid {
+  display: grid;
+  justify-content: center; /* 내용 가운데 */
+  align-content: center; /* element 가운데 정렬 */
+  min-height: 100vh; /* 화면 전체 채우기 */
+  grid-template-columns: repeat(4, 100px); /* 4개씩 반복 */
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px); /* 최소크기, 최대크기는 자동, 5개의 row */
+}
+
+.calculator-grid > button {
+  cursor: pointer; /* 포인터 나타남 */
+  font-size: 2rem;
+  border: 2px solid white;
+  outline: none;
+  background-color: rgba(255, 255, 255, .75); /* 약간 투명하게 */
+	border-radius: 50%;
+	margin: 5px;
+}
+
+.calculator-grid > button:hover {
+  background-color: rgba(255, 255, 255, .9); /* 마우스 올라가면 변함 */
+}
+
+.calculator-grid > button:active {
+	background-color: rgba(0, 0, 0, .75);
+	color: white;
+}
+
+.span-two {
+  grid-column: span 2;
+  /* 2개 크기만큼 차지하게 */
+}
+
+.output {
+  grid-column: 1 / -1; /* -1은 last column을 의미 */
+  background-color: rgba(0, 0, 0, .75);
+  display: flex;
+  /* 맨 왼쪽에 정렬 */
+  align-items: flex-end;
+  /* content 주변에 공간 생기게 */
+  justify-content: space-around;
+  /* flex하는게 좌우가 아니라 상하가 되게 */
+  flex-direction: column;
+  padding: 10px;
+  /* 오버플로우 방지로 어떤 문자든 자름 */
+  word-wrap: break-word;
+  /* 오버플로우 방지로 임의의 포인트에서 자름 */
+  word-break: break-all;
+}
+
+.output .previous-operand {
+  color: rgba(255, 255, 255, .75);
+  font-size: 1.5rem;
+}
+
+.output .current-operand {
+	color: white;
+	font-size: 2.5rem;
+}

@@ -12,10 +12,10 @@ const Counter = class counter {
         this._state = state;
         this._num = num;
     }
-    get State() {
+    get state() {
         return this._state;
     }
-    set State(state) {
+    set state(state) {
         this._state = state;
     }
     get Number() {
